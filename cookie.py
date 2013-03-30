@@ -2,7 +2,7 @@
 from mechanize import Browser
 
 br = Browser()
-# часть кода, выполняющая GET запрос с куками к ctftime.org
+### часть кода, выполняющая GET запрос с куками к ctftime.org
 br.open("https://ctftime.org/") # fake'вый вызов открытия странички
 br.set_cookie("csrftoken=EB6XXXXXXXXXXXXXXXXXXXXXXXXXXpAC")
 br.set_cookie("sessionid=e56XXXXXXXXXXXXXXXXXXXXXXXXXXfc6") # пример куков для ctftime
@@ -13,7 +13,7 @@ br.set_handle_robots(False)
 br.open("https://ctftime.org/")
 print >>open('test.txt','w+'), br.response().read() # вывод в файл полученного ответа
 
-# Часть кода, выполяющая обход ТЕКСТОВОЙ капчи
+### Часть кода, выполяющая обход ТЕКСТОВОЙ капчи
 br.open('http://ctf.nullcon.net/challenges/programming/challenge.php')
 text = br.response().read().split("\n") # получили ответ и разбили по строкам
 string=text[4].replace("<span>","").replace("</span>","").replace("&nbsp;", " ").replace("</p>","").strip() # вместо подготовки регулярного выражения dummy убираем лишние фиксированные символы с 5 строки
@@ -22,3 +22,7 @@ br.method='POST' # настраиваем метод POST
 br['answer'] = string # подставляем в поле answer полученный результат
 print br.submit().read() # отправляем форму на сервер и печатаем полученный результат
 
+### Добавление к запросу X-Forwarded-For
+br.addheaders = [('X-Forwarded-For', '127.0.0.1')]
+br.open("http://ctf.nullcon.net/challenges/web/web1/getflag.php")
+print br.response().read()
