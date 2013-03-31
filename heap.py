@@ -43,6 +43,27 @@ def prosto_struct():
     f.write(pack('!l', 1025))  # сетевой (от старшего к младшему, big-endian)
     f.write(pack('>l', 1025))  # от старшего к младшему, big-endian
     f.write(pack('<l', 1025))  # от младшего к старшему, little-endian # родной для i386
+# Format 	C Type 	        Python type 	Standard size
+#   x 	    pad byte 	    no value
+#   c 	    char 	        bytes of length     1
+#   b 	    signed char 	integer 	        1
+#   B 	    unsigned char 	integer 	        1
+#   ? 	    _Bool 	        bool 	            1
+#   h 	    short 	        integer 	        2
+#   H 	    unsigned short 	integer 	        2
+#   i 	    int 	        integer 	        4
+#   I 	    unsigned int 	integer 	        4
+#   l 	    long 	        integer 	        4
+#   L 	    unsigned long 	integer 	        4
+#   q 	    long long 	    integer 	        8
+#   Q 	    unsigned long long 	integer 	    8
+#   n 	    ssize_t 	    integer
+#   N 	    size_t 	        integer
+#   f 	    float 	        float 	            4
+#   d 	    double 	        float 	            8
+#   s 	    char[] 	        bytes
+#   p 	    char[] 	        bytes
+#   P 	    void * 	        integer
 
 ### Работа с путями
 import os.path
@@ -60,6 +81,22 @@ def prosto_string_const():
     print string.ascii_lowercase
     print string.digits # строка с цифрами от 0 до 9
     print string.letters # буквы, зависят от установки локали
+    print string.hexdigits # 0-9a-fA-F
+
+### Функции для работы с форматированием строк
+def prosto_string_format():
+    print '{:<30}'.format('left aligned') # 'left aligned                  '
+    print '{:>30}'.format('right aligned') # '                 right aligned'
+    print '{:^30}'.format('centered') # '           centered           '
+    print '{:*^30}'.format('centered')  # use '*' as a fill char # '***********centered***********'
+    # format also supports binary numbers
+    print "int: {0:d};  hex: {0:x};  oct: {0:o};  bin: {0:b}".format(42) # 'int: 42;  hex: 2a;  oct: 52;  bin: 101010'
+    # with 0x, 0o, or 0b as prefix:
+    print "int: {0:d};  hex: {0:#x};  oct: {0:#o};  bin: {0:#b}".format(42) # 'int: 42;  hex: 0x2a;  oct: 0o52;  bin: 0b101010'
+    # Expressing a percentage
+    points = 19.5
+    total = 22
+    print 'Correct answers: {:.2%}'.format(points/total) # 'Correct answers: 88.64%'
 
 ### Функции подстановки в строки по ключевым словам
 from string import Template
@@ -108,4 +145,4 @@ def str2bits(open_text):
     [bts.extend([int(b) for b in '00000000'[len(bin(ord(c))[2:]):] + bin(ord(c))[2:]]) for c in open_text]
     return bts
 
-print str2bits("Hello_world")
+prosto_string_format()
