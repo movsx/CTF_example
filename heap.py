@@ -102,4 +102,10 @@ def prosto_zip():
         for fileinfo in ziparc.filelist:
             print(fileinfo.filename)
 
-prosto_zip()
+### преобразование строки в массив битов
+def str2bits(open_text):
+    bts = []
+    [bts.extend([int(b) for b in '00000000'[len(bin(ord(c))[2:]):] + bin(ord(c))[2:]]) for c in open_text]
+    return bts
+
+print str2bits("Hello_world")
