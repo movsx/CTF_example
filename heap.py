@@ -145,4 +145,12 @@ def str2bits(open_text):
     [bts.extend([int(b) for b in '00000000'[len(bin(ord(c))[2:]):] + bin(ord(c))[2:]]) for c in open_text]
     return bts
 
-prosto_string_format()
+### преобразование массива битов в ASCII строку
+def bits2str(bits):
+    chars = []
+    for b in range(len(bits) / 8):
+        byte = bits[b*8:(b+1)*8]
+        chars.append(chr(int(''.join([str(bit) for bit in byte]), 2)))
+    return ''.join(chars)
+
+print bits2str(str2bits("Hello_world"))
