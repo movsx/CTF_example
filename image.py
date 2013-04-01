@@ -12,7 +12,7 @@ def get_pixels(pixels, y, x): # получить характеристики т
 
 # Delta между двумя одинаковыми точками
 def diff_images(steg_pixels, orig_pixels, y, x):
-    return tuple(map(lambda x, y: x^y, get_pixels(steg_pixels, y, x), get_pixels(orig_pixels, y, x)))
+    return tuple(map(lambda p, t: abs(p-t), get_pixels(steg_pixels, y, x), get_pixels(orig_pixels, y, x)))
 
 ### Блок для открытия файла, его загрузки и печати пикселей
 # Примеры работы с функциями графической библиотеки PIL
@@ -26,6 +26,8 @@ def load_image_file():
             print get_pixels(pixels, y,x)
 
 ### Блок для накладывания первой картинки на вторую
+# картинка-задача http://dl.dropbox.com/u/17463542/forensics/b.jpg
+# картинка-оригинал http://dl.dropbox.com/u/17463542/forensics/c.jpg
 def xor_image_file():
     im = Image.open('b.jpg', 'r') # Открыть изображение в режиме для чтени
     pixels = im.load()
@@ -51,6 +53,8 @@ def example_bpp():
         for i in range(len(bts) // BPP):
             chunk = ''.join(bts[i * BPP : (i + 1) * BPP])
             f.write(chr(int(chunk, 2)))
+
+xor_image_file()
 
 #example_bpp()
 
