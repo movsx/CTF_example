@@ -142,6 +142,10 @@ def prosto_zip():
 ### преобразование строки в массив битов
 def str2bits(open_text):
     bts = []
+    # bin(ord("A")) = 0b1000001, поэтому [2:] мы отбросим 0b и получим 7 знаков
+    # '00000000'[len(bin(ord(c))[2:]):] - мы получим один 0, который у нас расширяет до 8 символов
+    # напечатать просто 8 значное представление будет
+    # print ['00000000'[len(bin(ord(c))[2:]):] + bin(ord(c))[2:] for c in "ABC"]
     [bts.extend([int(b) for b in '00000000'[len(bin(ord(c))[2:]):] + bin(ord(c))[2:]]) for c in open_text]
     return bts
 
@@ -153,4 +157,22 @@ def bits2str(bits):
         chars.append(chr(int(''.join([str(bit) for bit in byte]), 2)))
     return ''.join(chars)
 
-print bits2str(str2bits("Hello_world"))
+### пример шифрования симметричными ключами
+def crypt():
+    text = "0123456789ABCDEF"
+    params = [1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8,
+              1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8,
+              1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8]
+    bts = []
+    # обрабатываем по 16*8 (128) бит открытого кода за раз
+    # blk for blk in [bts[i * 128:(i+1) * 128] for i in range(len(text) // 16)]
+    [bts.extend([int(b) for b in '00000000'[len(bin(ord(c))[2:]):] + bin(ord(c))[2:]]) for c in text]
+    print [blk for blk in [bts[i * 128:(i+1) * 128] for i in range(len(text) // 16)]]
+    # params - должен содержать обязательно 128 значений, мы пробегаемся по каждому биту и умножаем на ключ из params
+    print [map(lambda x: x[0] * x[1] ,zip(blk, params)) for blk in [bts[i * 128:(i+1) * 128] for i in range(len(text) // 16)]]
+    # затем все это суммируем
+    print [sum(map(lambda x: x[0] * x[1] ,zip(blk, params))) for blk in [bts[i * 128:(i+1) * 128] for i in range(len(text) // 16)]]
+    return [sum(map(lambda x: x[0] * x[1] ,zip(blk, params))) for blk in [bts[i * 128:(i+1) * 128] for i in range(len(text) // 16)]]
+
+crypt()
+#print bits2str(str2bits("Hello_world"))
