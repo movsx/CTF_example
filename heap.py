@@ -174,5 +174,24 @@ def crypt():
     print [sum(map(lambda x: x[0] * x[1] ,zip(blk, params))) for blk in [bts[i * 128:(i+1) * 128] for i in range(len(text) // 16)]]
     return [sum(map(lambda x: x[0] * x[1] ,zip(blk, params))) for blk in [bts[i * 128:(i+1) * 128] for i in range(len(text) // 16)]]
 
-crypt()
-#print bits2str(str2bits("Hello_world"))
+
+### Пример организации соединения по протоколу Telnet (можно использовать для любых протоколов)
+import getpass
+import sys
+import telnetlib
+
+def sample_telnet():
+    HOST = "hostname"
+    user = raw_input("Enter your remote account: ")
+    password = getpass.getpass()
+    tn = telnetlib.Telnet(HOST)
+    tn.read_until("login: ") # ждать, пока не придет запрос логина
+    tn.write(user + "\n")
+    if password:
+        tn.read_until("Password: ") # ждать, пока не придет запрос пароля
+        tn.write(password + "\n")
+    tn.write("ls\n")
+    tn.write("exit\n")
+    print tn.read_all()
+
+sample_telnet()
