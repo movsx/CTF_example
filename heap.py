@@ -139,6 +139,16 @@ def prosto_zip():
         for fileinfo in ziparc.filelist:
             print(fileinfo.filename)
 
+import binascii
+
+### Преобразование ASCII строки с Hexзначениями в буфер
+def str2hex(text): # "30313233" = "0123"
+    return binascii.a2b_hex(text)
+
+### Преобразование буфера в ASCII строку с Hexзначениями
+def hex2str(text): # "0123" = "30313233"
+    return binascii.b2a_hex(text)
+
 ### преобразование строки в массив битов
 def str2bits(open_text):
     bts = []
@@ -196,11 +206,11 @@ def sample_telnet():
 
 ### Пример задачи на сумму цифр с управляющими символами
 # условие
-"""
-    Start reading from right, if digit then add the digit, if 'A' then remove it and go back 2 places, if 'B' then remove and go front 2 places
-    Example : 65a43b21 Answer is 14
-    Solve: 9798781ba143567b89784351b36769689a4949877543623467b8776a424b34a4556787a6542a213457a8865432a5b46569342578ab235912a3985674a2345321895ba01987654032165a43b21
-"""
+###
+#    Start reading from right, if digit then add the digit, if 'A' then remove it and go back 2 places, if 'B' then remove and go front 2 places
+#    Example : 65a43b21 Answer is 14
+#    Solve: 9798781ba143567b89784351b36769689a4949877543623467b8776a424b34a4556787a6542a213457a8865432a5b46569342578ab235912a3985674a2345321895ba01987654032165a43b21
+###
 # решение
 def solve(input, currentPosition=0, currentSum=0):
     if currentPosition >= len(input):
@@ -224,5 +234,6 @@ def beginSolve():
     reverseToSolve = toSolve[::-1]
     print solve(list(reverseToSolve))
 
-beginSolve()
+print str2hex("30313233")
+print hex2str("0123")
 
