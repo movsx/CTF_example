@@ -167,6 +167,10 @@ def bits2str(bits):
         chars.append(chr(int(''.join([str(bit) for bit in byte]), 2)))
     return ''.join(chars)
 
+### Преобразование двоичной строки разделенной пробелами в ASCII строку
+def bin2str(text): # "110000 110001 110010 110011" = "0123"
+    return ''.join( [chr( int( x, 2 ) ) for x in text.split(" ")] )
+
 ### пример шифрования симметричными ключами
 def crypt():
     text = "0123456789ABCDEF"
@@ -266,4 +270,4 @@ def ParseDisk(name):
         if len(temp) > 0: print temp
 
 
-
+print bin2str("110000 110001 110010 110011")
