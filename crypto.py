@@ -140,6 +140,44 @@ def Merkle2():
 # 22424170465
 ### The flag is 22424170465
 
-Merkle()
-print
-Merkle2()
+### Пример взлома простых алгоритмов перебором
+# Условие
+# cipher-text     168 232 100 162 135 179 112 100 173 206 106 123 106 195 179 157 123 173
+# Алгоритм шифрования
+"""
+    for ($i = 0; $i<strlen($str); $i++)
+    $dec_array[] = ord($str{$i});
+    $ar = $dec_array;
+    $max = max($ar);
+
+    $key = rand(10,$max);
+    $key = 101*$key;
+
+    for($i=0;$i<strlen($str);$i++){
+    $x = $ar[$i];
+    $am = ($key+$x)/2;
+    $gm = sqrt($key*$x);
+    $enc = $am + $gm;
+    $encrypt = floor($enc)%255;
+    echo $encrypt.' ';
+    } """
+### Решение (флаг: myalgocantbebroken)
+import math
+def sample_bruteenc():
+    cipher = (168, 232, 100 ,162, 135, 179, 112, 100, 173, 206, 106, 123, 106, 195, 179, 157, 123, 173)
+    for key in range (10,128):
+        plain = []
+        key_new = key * 101
+        for i in range (0, len(cipher)):
+            for p in range(32,128):
+                x = p
+                am = float(key_new+x)/2
+                gm = math.sqrt(key_new*x)
+                enc = am + gm
+                encrypt = int(enc)%255
+                if(encrypt == cipher[i]):
+                    plain.append(p) #array_push($plain,$p);
+        if(len(plain) == len(cipher)):
+            print ''.join( [chr(t) for t in plain] )
+
+sample_bruteenc()
