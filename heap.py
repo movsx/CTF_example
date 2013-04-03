@@ -234,6 +234,36 @@ def beginSolve():
     reverseToSolve = toSolve[::-1]
     print solve(list(reverseToSolve))
 
-print str2hex("30313233")
-print hex2str("0123")
+### Работа с диском на уровне ОС Windows
+# Вызов должен быть ParseDisk(r"\\.\f:") !!! требуются права администратора
+import os, sys, re
+import win32file
+import win32con
+
+def grep(pattern,list):
+    return filter(pattern.search,list)
+def ParseDisk(name):
+    BUFFER_SIZE = 2048
+    Buffer = 0
+    Buffer_Read = BUFFER_SIZE
+    hDir = win32file.CreateFile (
+        name,
+        win32con.GENERIC_READ,
+        win32con.FILE_SHARE_READ,
+        None,
+        win32con.OPEN_EXISTING,
+        win32con.FILE_FLAG_BACKUP_SEMANTICS,
+        None
+    )
+    pattern = re.compile("\w{5}");
+    data = win32file.AllocateReadBuffer(4096)
+    while True:
+        result = win32file.ReadFile(hDir, data)
+        if not result: break
+        print data
+        strdata = data
+        temp = grep (pattern, strdata)
+        if len(temp) > 0: print temp
+
+
 
