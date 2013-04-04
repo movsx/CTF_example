@@ -321,4 +321,122 @@ def sample_bruteThreadin():
 # Flag is: h0W_did_YoU_hAck_RSA
 ###################################
 
+
+#####################################
+### Перебор AES алгоритма
+#####################################
+### условие
+#    We found the source code for this robot encryption service, except the key was redacted from it. The service is currently running at 23.21.15.166:4433
+#    Title: Encryption Service (300)
+#    Category: Password Guessing
+### Мысли
+"""
+    The service basically implements an encryption Oracle, it reads data from the socket and returns the AES-CBC encrypted
+    version of this data, concatenated with a secret string. The challenge is to find this secret string.
+
+    Mulitple blocks can be submitted where the ciphertext of the previous block will be used as the IV for the next.
+    The IV for the first block is randomly generated and sent to the client by the server. Data is encrypted in blocks of
+    16 bytes (128 bits). The output provided is the encrypted version of <input> + <level_key> + <padding>.
+
+    So how do we find the hidden challenge key… Let’s look at what happens if we supply input AAAA.
+    In that case the input to AES looks as follows:
+
+            block 1     |      block 2      |      block 3      |
+            AAAA xxxx xxxx xxxx|xxxx xxxx xxxx xxxx|xppp pppp pppp pppp|
+
+    In this example the x’s represent characters from the secret key and p are padding characters.
+    In this case there is only one unknown byte in the third block which is the last character of the key.
+    If we store the encrypted version of this block we can simply implement a linear search by first encrypting
+    appp pppp pppp pppp, then bppp pppp pppp pppp, then cppp pppp pppp pppp, etc. Until we get an encrypted block
+    which is equal to the block we are searching for.
+
+    There is one slight complication here which are the IVs, which are meant to make sure that the same input doesn’t
+    always encrypt to the same output. However the IV for the third block, which we are searching for, is simlpy the
+    ciphertext of the previous block. So in practice the third block looks like this:
+
+            (xppp pppp pppp pppp) xor (cipher_text_second_block)
+
+    So if we submit (appp pppp pppp pppp) xor (cipher_text_second_block) xor (next_iv) where a is our guess for the last
+    character of the key we receive the same output if a was guessed correctly.
+
+    The nice thing about this approach, is that we can keep repeating it to reveal the next character of the key,
+    for example to find the second character of the key we use input AAAAA which will yield the following encrypted block:
+
+            block 1     |      block 2      |      block 3      |
+            AAAA Axxx xxxx xxxx|xxxx xxxx xxxx xxxx|xxpp pppp pppp pppp|
+
+    Since the last character of the key is known from the previous step we are again only left with a limited number
+    of possibilities. This process can be repeated to reveal the entire key.
+
+    We implemented the attack in python:
+"""
+
+def sample_Aes():
+    import socket,struct,sys,string
+    def make(data):
+        return struct.pack('I',len(data)) + data
+
+    def pad(data, blocksize=16):
+        l = blocksize - (len(data) % blocksize)
+        return data + chr(l) * l
+
+    def get_enc(data):
+        global s
+        s.send(make(data))
+        l = struct.unpack("I",s.recv(4))[0]
+        data = s.recv(l)
+        return data
+
+    def string_xor(a,key):
+        return ''.join(chr(ord(a[i]) ^ ord(key[i%len(key)])) for i in range(len(a)))
+
+    def attack(key):
+        global s
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.connect(('174.129.168.125', 4433))
+
+        iv = s.recv(16)
+        prefix = "A" * (4+len(key))
+        enc = get_enc(prefix)
+        third_block = enc[32:32+16]
+        third_iv = enc[16:16+16]
+
+        search = third_block
+        print "Search block: %s" % search.encode('hex')
+
+        iv = enc[-16:]
+
+        for x in string.lowercase + '_':
+            guess = string_xor(pad(x+key),third_iv)
+            new = get_enc(string_xor(guess,iv))
+            lb = new[:16]
+            if lb == search:
+                return x
+            iv = new[-16:]
+
+
+    key=''
+    for x in range(29):
+        new = attack(key)
+        key = new + key
+        print "Found: " + key
+
+"""
+    Running this program reveals the key:
+
+            Search block: 107b4efae8d1befa1df39a0802fa6c1d
+            Found: s
+            Search block: afdfde9db5a44df21a84a089a9083f53
+            Found: us
+            Search block: eb632f01027fe10685716e9ecac582f5
+            Found: ous
+            ...
+            Found: edictable_ivs_are_dangerous
+            Search block: ad04e566628430aea3628fe85de85189
+            Found: redictable_ivs_are_dangerous
+            Search block: da429ea307dae8d1c2e58895545b004f
+            Found: predictable_ivs_are_dangerous
+"""
+
+
 sample_bruteThreadin()
