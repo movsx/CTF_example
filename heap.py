@@ -269,5 +269,26 @@ def ParseDisk(name):
         temp = grep (pattern, strdata)
         if len(temp) > 0: print temp
 
+### Функция перевода чисел из одной системы в другую
+# условие задачи: входной файл text
+# 1 строка: "из какой системы" "в какую"
+# 2 строка: "число"
+def perevod_chisel():
+    buf = open("text", "r").readlines()
+    for i in range(0, len(buf), 2):
+        str1, str2 = buf[i:i+2]
+        types = str1.split(" ") #types[0] - откуда types[1] - куда
+        x = int(str2, int(types[0].strip()))
+        int2 = int(types[1].strip())
+        n=""
+        while x > 0:
+            y, x = x % int2, int(x / int2)
+            if y < 10:
+                q = str(y)
+            else:
+                q = chr(ord("A")+y-10)
+            n = q + n
+        print (n)
 
-print bin2str("110000 110001 110010 110011")
+
+#print bin2str("110000 110001 110010 110011")
