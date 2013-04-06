@@ -438,5 +438,124 @@ def sample_Aes():
             Found: predictable_ivs_are_dangerous
 """
 
+### Взлом RSA, основанный на малой экспоненте
+### Plaid CTF 2012 – RSA
+# Условие задачи http://dl.dropbox.com/u/17463542/zadacha.zip
+# A very cool and surprisingly easy crypto challenge: all you have to do is break 4096-bit RSA!
+# Of course, there are some special circumstances which make solving this possible at all.
+# We have two files, one is the encrypted data (presumably, it is named enc.dat and looks like random data)
+# and the other is a RSA public key in PEM format. Let’s list the details of this public key:
 
-sample_bruteThreadin()
+"""
+user@box:~$ openssl rsa -noout -text -pubin -in rsa/id-rsa.pub
+Modulus (4096 bit):
+00:b0:a1:f3:90:ac:d3:d4:3b:47:d3:9f:13:26:62:
+f6:9c:15:89:25:d9:28:71:e4:78:69:e2:84:1a:91:
+7c:20:d5:10:24:31:b9:a9:78:14:58:d8:40:fd:29:
+57:78:15:a4:16:12:d6:87:a3:48:7d:26:fb:ae:25:
+6f:15:d4:74:0c:34:59:1b:64:6a:bc:cc:b1:a2:7a:
+cd:e2:99:b3:e7:16:00:85:7b:45:5c:28:36:60:e0:
+45:5c:68:ff:45:c0:64:4c:fe:c2:11:d7:f5:1a:16:
+c8:2e:91:d7:86:d9:2c:79:9f:b3:cb:48:f9:2d:e3:
+42:ba:70:dd:82:13:05:6b:31:4a:8d:51:da:94:93:
+cf:1b:86:ec:15:fd:f0:3e:04:6e:76:d3:f1:a1:ad:
+0a:ab:b6:84:ce:5d:15:7e:39:98:28:a6:3a:5a:f5:
+92:02:28:bb:5e:a1:e6:6b:8f:ea:a3:cc:bb:af:f5:
+55:e3:46:79:77:30:dd:fc:1c:4c:f4:a9:dd:40:65:
+88:62:93:48:c4:c2:92:65:df:9e:2c:3d:02:55:8b:
+e5:e3:5c:b2:77:f4:e7:ac:7b:51:58:ef:39:03:a3:
+96:48:63:71:02:9e:54:a3:45:29:2a:ba:47:49:9f:
+1c:26:7e:68:0a:e7:38:19:5f:d5:af:2a:80:75:93:
+98:90:f5:d6:9e:6b:3e:94:e3:e5:60:86:1a:a6:c6:
+c6:9d:a8:24:05:db:a2:18:2e:66:ec:ff:6a:8a:9c:
+df:5a:d5:22:6f:07:3e:7d:52:5e:05:0f:dd:77:e0:
+bb:18:91:a4:9e:fe:c2:d3:67:a6:93:d2:a6:79:9d:
+0d:46:67:95:3d:4f:3d:de:c1:6a:c1:5b:b4:cf:60:
+25:ea:58:ec:b6:df:a5:72:31:6d:a0:8d:31:06:07:
+39:73:32:2a:e7:59:74:46:f2:fd:30:43:df:6e:1d:
+60:4c:6a:1f:0e:59:47:3d:9b:c1:82:d4:ec:6f:c4:
+58:8f:1c:6b:2a:a4:76:87:6a:84:b2:d4:e0:d4:59:
+10:39:91:18:d7:e1:e2:0d:cc:27:70:3f:2b:d3:e9:
+af:72:2f:37:a7:67:3b:15:d6:74:92:28:62:c8:4d:
+00:fc:2f:c7:dd:dd:c9:15:c4:69:3f:cb:0b:17:89:
+e9:dc:bd:72:ac:04:65:9e:7c:18:dc:f3:62:54:76:
+00:40:40:2b:fc:ef:11:b8:a3:ef:9c:8b:dd:ba:aa:
+8d:14:c6:e8:f5:18:a7:0b:03:6d:20:6b:80:9c:d9:
+b3:b5:1a:1e:c0:13:2d:ac:e9:6d:ca:94:51:f3:4c:
+38:ab:84:ed:47:5e:7d:94:fb:e9:ff:c0:07:f2:d1:
+48:60:bd
+Exponent: 3 (0x3)
+"""
+
+# This is already a bit odd. Almost all RSA keys have a much higher exponent these days (usually 0×10001)
+# because there are some attacks possible with low exponents. Googling for specific details on this half-remembered
+# fact mostly yields attacks which are only possible when you have lots of messages, but we only have one of course.
+# But maybe it is so simple that it doesn’t really get much mention on the internet these days?
+
+# One thing which is quite important when using RSA is to add proper cryptographic padding to your message
+# (and to check the padding when decrypting, but we don’t have anything that decrypts data for us here).
+# Remember, RSA encryption without padding is just raising the message to the power of your exponent (3)
+# and then taking the remainder after division by the modulus.
+
+# The remainder (or modulus) operation is very important here, if it wasn’t there we could simply take the cubic
+# root of the ‘encrypted’ value to recover the plaintext.
+
+# However, if someone were to encrypt a relatively short, unpadded ascii message with such a low exponent
+# and such a high modulus, the modulus operation actually doesn’t make our life all that much harder.
+# To see why let’s take a look at the minimum and maximum values for the ‘encrypted’ value before the modulus operation.
+
+def sample_RSA_lowexpo():
+    import gmpy
+
+    # Pubkey
+    n = 0xb0a1f390acd3d43b47d39f132662f69c158925d92871e47869e2841a917c20d5102431b9a9781458d840fd29577815a41612d687a3487d26fbae256f15d4740c34591b646abcccb1a27acde299b3e71600857b455c283660e0455c68ff45c0644cfec211d7f51a16c82e91d786d92c799fb3cb48f92de342ba70dd8213056b314a8d51da9493cf1b86ec15fdf03e046e76d3f1a1ad0aabb684ce5d157e399828a63a5af5920228bb5ea1e66b8feaa3ccbbaff555e346797730ddfc1c4cf4a9dd406588629348c4c29265df9e2c3d02558be5e35cb277f4e7ac7b5158ef3903a396486371029e54a345292aba47499f1c267e680ae738195fd5af2a8075939890f5d69e6b3e94e3e560861aa6c6c69da82405dba2182e66ecff6a8a9cdf5ad5226f073e7d525e050fdd77e0bb1891a49efec2d367a693d2a6799d0d4667953d4f3ddec16ac15bb4cf6025ea58ecb6dfa572316da08d3106073973322ae7597446f2fd3043df6e1d604c6a1f0e59473d9bc182d4ec6fc4588f1c6b2aa476876a84b2d4e0d45910399118d7e1e20dcc27703f2bd3e9af722f37a7673b15d674922862c84d00fc2fc7ddddc915c4693fcb0b1789e9dcbd72ac04659e7c18dcf36254760040402bfcef11b8a3ef9c8bddbaaa8d14c6e8f518a70b036d206b809cd9b3b51a1ec0132dace96dca9451f34c38ab84ed475e7d94fbe9ffc007f2d14860bdL
+    e = 0x3
+    # Message
+    msg_str = '\x4a\x69\x06\x21\xbd\x15\x0c\xf6\x93\xed\x8c\x85\x70\x8b\x6d\x0f\xa2\xcc\x85\x0b\x48\x73\x64\x43\x08\x23\x8f\x38\x03\x1a\x93\x31\x02\xf6\x66\xb8\x92\x68\x99\x60\x6e\x49\x1f\x36\x0a\x24\xd2\x6b\x9e\x91\x5e\xd6\xa1\x28\x49\x2b\x14\x47\x99\xe9\xee\xd2\x50\x05\x0a\x2d\xef\xa2\xac\x53\x52\xb0\x49\x2c\x98\x83\x28\xb0\x74\x36\xb8\x26\xa5\x00\xf9\x19\x35\xac\x58\x1c\x0c\x60\x66\xa7\xa9\x49\x46\xf2\x1e\x29\x0b\x1b\x2f\xbd\xf6\x73\xad\xb0\x5c\x04\x45\x90\x5b\xdd\x88\x01\xc9\x3c\xfb\x4c\xe7\x43\xcd\x62\xbf\x79\xe9\x7f\x95\x9c\xb9\x44\x9f\xc3\x7d\xbf\x5c\xd3\x15\x56\x5b\xb0\xc4\x33\x69\xe6\x47\x3b\xc9\x7d\x2d\xb5\xcc\x2c\x01\xde\x75\x0b\x99\x59\xb8\xde\x3d\x53\x95\xf1\x1f\xa8\xbb\xe8\x8b\x8d\xfe\x52\x1d\x78\x2d\xfd\x41\x66\x4c\x08\x2a\x80\x6b\xfe\x7f\x30\x0b\x56\x33\x27\x4f\xdd\x5f\x22\x93\xe0\xd0\xc2\x1e\xc6\xb1\xd2\xc9\x3f\xc0\x4d\x22\xf1\xaa\x1c\x9e\x0a\xad\xfa\x28\x54\xcf\x32\x59\x51\xfc\xfe\x84\xec\x4e\xd2\xa5\xc9\x10\xed\xb3\x2b\xba\x9f\x25\xab\xfe\x53\x42\x03\xef\x3e\xbb\x1d\x36\xfa\x3b\x12\x55\xb8\xa3\x49\xc4\xa7\x70\x66\xd1\xc3\xf2\x65\x90\x0d\x11\xca\x1b\x6a\x80\x66\xff\x01\xe4\x98\x05\x8d\x55\x7a\x15\x05\x48\x82\xdd\x13\x6c\x06\x4e\x9c\xe2\x8e\x2d\x44\x05\x35\x76\x73\xac\x23\xf6\x31\x06\x43\xdb\x0b\x93\xa3\x99\x6e\xe6\x5d\x15\xe0\x86\xea\x68\x77\x18\x01\x6b\x18\x41\x08\xa7\x2f\xc9\x79\xfa\x72\xb4\x91\x3a\xa7\x79\x28\x96\xf5\x1c\x68\xfc\x97\x91\x77\x35\xd7\xe2\x86\x4b\xd3\x84\xcf\x9b\x77\xaf\xd2\xc6\xbd\xfc\xdd\x32\x54\x13\x9a\x69\xb6\x45\xb1\x52\x42\x4b\xa9\x02\x79\xe2\x75\x56\x3a\xf5\x2f\xec\x48\x7e\x68\xd0\xba\x3c\x42\x2d\x00\x07\xe2\x6f\xfc\x9a\x03\xce\x98\x90\xdd\x38\x15\x3a\x36\x46\xd4\x9d\xc0\x71\xe1\xfd\x7a\x3c\x42\x1a\xd2\x1b\x62\xeb\x63\xce\x40\x88\x7d\xd6\x0b\x60\x13\x4a\x1e\xf0\x6c\x60\x9e\xf4\x6d\xb6\xd9\x92\x9e\xab\xfb\x15\x93\x2d\x5d\x7a\xc7\x0b\xec\xf1\xb4\xca\xf8\x55\x14\xd3\x15\x1f\x30\xce\x69\x65\xf9\xd1\x67\x21\xe8\x65\xb7\xd3\x01\x48\xf6\xb8\x46\xe5\x03\x15\xb7\x0e\x1e\xfd\x7a\xd8\xe4\xff\x9f\x1d\x84\xfb\xa4\x10\x81\x16\x71\xe5\x6d\xe2\x46\x96\x55\xce\xd0\x14\xd0\x09\xe1\x27\x97\x38\x21\xf3\x23'
+    msg_num = int(msg_str.encode('hex'), 16)
+
+    ubound = pow(int('7D' * 172,16), e)
+    lbound = pow(int('20' * 172,16), e)
+    # We were working on this after the hint that the plaintext was 172 characters, so we can use that here.
+    # Otherwise we’d just have to try all the different lengths, starting from low values and working our way up.
+    # This first calculates the result of raising the ‘smallest’ possible message (consisting entirely of spaces)
+    # to the third power, and then does the same for the “largest” possible message in the ascii range.
+    # Now remember that ciphertext is the remainder of the real message raised to the third power modulo n
+    # (n being the modulus part of the rsa public key).
+
+    #ciphertext = pow(plaintext, 3) % modulus
+    # 'ciphertext' is the remainder, so all we need to know to take the cubic root is the quotient 'q'
+    # ciphertext + modulus * q = pow(plaintext, 3)
+    max_q = ubound / n
+    min_q = lbound / n
+    print max_q - min_q # This gives the number 732851516. That’s pretty big, but it’s certainly doable on a fast system with a good big-number library
+    gs = gmpy.mpz(msg_num)
+    gm = gmpy.mpz(n)
+    g3 = gmpy.mpz(3)
+    mask = gmpy.mpz(0x8080808080808080808080808080808080808080808080808080808080808080808080808080808080808080808080808080808080808080808080808000)
+
+    for i in xrange(min_q, max_q):
+        gs += gm
+        root,exact = gs.root(g3)
+        if (root & mask).bit_length() < 8:
+            print ('0%x' % root).decode('hex') # Turns out our assumption that spaces would be the lowest characters in the string was actually incorrect: this message starts with a linefeed!
+            # Adding a 0 to the start of the hex string allows us to decode it as ascii and see that this is actually the correct answer, and we just got lucky:
+
+### Тоже самое, только от команды leetmore
+# Немного элегантнее, но на порядок непонятнее
+from libnum import *
+def sample_RSA_lowexpo2():
+    import gmpy
+    N = long('00b0a1f390acd3d43b47d39f132662f69c158925d92871e47869e2841a917c20d5102431b9a9781458d840fd29577815a41612d687a3487d26fbae256f15d4740c34591b646abcccb1a27acde299b3e71600857b455c283660e0455c68ff45c0644cfec211d7f51a16c82e91d786d92c799fb3cb48f92de342ba70dd8213056b314a8d51da9493cf1b86ec15fdf03e046e76d3f1a1ad0aabb684ce5d157e399828a63a5af5920228bb5ea1e66b8feaa3ccbbaff555e346797730ddfc1c4cf4a9dd406588629348c4c29265df9e2c3d02558be5e35cb277f4e7ac7b5158ef3903a396486371029e54a345292aba47499f1c267e680ae738195fd5af2a8075939890f5d69e6b3e94e3e560861aa6c6c69da82405dba2182e66ecff6a8a9cdf5ad5226f073e7d525e050fdd77e0bb1891a49efec2d367a693d2a6799d0d4667953d4f3ddec16ac15bb4cf6025ea58ecb6dfa572316da08d3106073973322ae7597446f2fd3043df6e1d604c6a1f0e59473d9bc182d4ec6fc4588f1c6b2aa476876a84b2d4e0d45910399118d7e1e20dcc27703f2bd3e9af722f37a7673b15d674922862c84d00fc2fc7ddddc915c4693fcb0b1789e9dcbd72ac04659e7c18dcf36254760040402bfcef11b8a3ef9c8bddbaaa8d14c6e8f518a70b036d206b809cd9b3b51a1ec0132dace96dca9451f34c38ab84ed475e7d94fbe9ffc007f2d14860bd', 16)
+    orig = s2n(open("enc.dat").read().rstrip())
+
+    c = orig
+    while True:
+        m = gmpy.root(c, 3)[0]
+        if pow(m, 3, N) == orig:
+            print "pwned", n2s(m)
+            break
+        c += N
+
+sample_RSA_lowexpo()
+sample_RSA_lowexpo2()
