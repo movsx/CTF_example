@@ -51,4 +51,10 @@ def sample_graphCap():
     br['answer'] = pz
     print br.submit().read()
 
+def antichat():
+    br.addheaders = [('X-Forwarded-For', '10.10.10.10')]
+    br.open("http://quest.rebz.net/sevenlev.php")
+    print br.response().read().decode('cp1251')
+
 br = Browser()
+antichat()
