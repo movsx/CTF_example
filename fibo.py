@@ -18,4 +18,7 @@ def fib(n):
 
 print "fib:"+str(fib(8))
 
-
+#более быстрый алгоритм
+def fastfib(n):
+    import math
+    return round(((1+math.sqrt(5))/2)**n/(math.sqrt(5)))
