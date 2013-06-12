@@ -406,4 +406,8 @@ def xor_file(file_name, key):
         i += 1
     return ptsa
 
+### Запуск браузера средствами операционной системы
+def startBrowser(url):
+    os.system(r'c:/"Program Files"/"Mozilla Firefox"/firefox.exe ' + url)
+
 rands(1)
