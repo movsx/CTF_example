@@ -123,4 +123,14 @@ def mtpereborMechanize():
         #участок кода, выполняемый многопоточно
         thread_.start()
 
+### многопоточный urllib3 для Keep-Alive
+def phd_urllib3():
+    import time, base64, binascii, urllib3
+    br = urllib3.HTTPConnectionPool('hackquest.phdays.com',maxsize=1,port=80,timeout=None)
+    myheaders = []
+    for q in range(0x3d, 0x5b): # 3e5858
+        myheaders.append({'Cookie':"SESS1D=123"})
+        r = br.request('GET', "/missions/tehix/", headers=myheaders[len(myheaders)-1])
+        print r.data
+
 br = Browser()
