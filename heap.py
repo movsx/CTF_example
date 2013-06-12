@@ -396,4 +396,14 @@ def walk2():
                                     f.close()
     print str(q)
 
+### функция xor для файла с определенным ключом
+def xor_file(file_name, key):
+    pts = open(file_name, "rb").read()
+    ptsa = ""
+    i = 0
+    for q in pts:
+        ptsa += chr(ord(q) ^ ord(key[i%len(key)]))
+        i += 1
+    return ptsa
+
 rands(1)
