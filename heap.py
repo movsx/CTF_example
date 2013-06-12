@@ -314,4 +314,8 @@ def rands(seed):
         r.append((r[i-31] + r[i-3])  &0xffffffff)
         print(r[i])
 
+### Добавлена функция декодирования ROT-13
+def rot13(str):
+    return str.decode('rot-13')
+
 rands(1)
