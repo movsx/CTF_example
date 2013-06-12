@@ -362,4 +362,38 @@ def walk():
         pts.write(i)
     pts.close()
 
+### Еще одна нерекурсивная функция обхода файловой системы до 8 уровня вложенности
+# задача: в том, что 8 уровней вложенности составляют байт, если он есть в ключе, то внутри директории есть файл, который
+# указывает место, где он хранится
+def walk2():
+    q = list(20 * " ")
+    for name in os.listdir("forest"):
+        path = os.path.join("forest", name)
+        for name2 in os.listdir(path):
+            path2 = os.path.join(path, name2)
+            for name3 in os.listdir(path2):
+                path3 = os.path.join(path2, name3)
+                for name4 in os.listdir(path3):
+                    path4 = os.path.join(path3, name4)
+                    for name5 in os.listdir(path4):
+                        path5 = os.path.join(path4, name5)
+                        for name6 in os.listdir(path5):
+                            path6 = os.path.join(path5, name6)
+                            for name7 in os.listdir(path6):
+                                path7 = os.path.join(path6, name7)
+                                for name8 in os.listdir(path7):
+                                    path8 = os.path.join(path7, name8, "end.txt")
+
+                                    f = open(path8)
+                                    lines = f.read()
+                                    if lines.find("key_part") > 0:
+                                        ps = int(lines[0:2])
+                                        print ps
+                                        ts = name + name2 + name3 + name4 + name5 + name6 + name7 +name8
+                                        print ts
+                                        q[ps] = chr(int(ts,2))
+                                        print q[ps]
+                                    f.close()
+    print str(q)
+
 rands(1)
