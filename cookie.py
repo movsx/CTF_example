@@ -65,5 +65,62 @@ def POSTRequest():
     opener = urllib2.build_opener()
     print opener.open(req).read()
 
-br = Browser()
+### многопоточный перебор с использованием Mechanize (медленно)
+def workerMechanize():
+    import time, Queue, threading
+    global i
+    global part
+    global text0
+    exception = False
+    while True:
+        if exception == False:
+            LOCK.acquire()
+            t = i
+            i += 1
+            LOCK.release()
+        exception = False
+        #print t
+        if t % 1000 == 0:
+            print time.time(), t
+        qas = part + '%05x'%t
+        #print qas
+        try:
+            br.open(qas)
+            text1 = br.response().read()
+        except:
+            #print "exception", t
+            exception = True
+            continue
+        if (text1.find('<label for="input_username">Username:</label>') <= 0):
+            if (text1.find('503 Service Temporarily Unavailable') <= 0):
+                q = open('%05x'%t, "wb")
+                print >>q, text0, "\n==================================\n", text1
+                print t
+                q.close()
+            else:
+                time.sleep(30)
+                exception = True
+                continue
 
+def mtpereborMechanize():
+    import time, Queue, threading
+    global i
+    global part
+    global text0
+    qas = part + '%05x'%i
+
+    br.open(qas)
+    text0 = br.response().read()
+    q = open('00000', "wb")
+    print >>q, text0
+    q.close()
+    queue = Queue.Queue()
+    THREADS_COUNT = 25
+
+    for i in range(THREADS_COUNT):
+        thread_ = threading.Thread(target=workerMechanize)
+        #Создается поток, target-имя функции, которая являет собой
+        #участок кода, выполняемый многопоточно
+        thread_.start()
+
+br = Browser()
