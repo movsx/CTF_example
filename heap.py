@@ -318,4 +318,19 @@ def rands(seed):
 def rot13(str):
     return str.decode('rot-13')
 
+### Функция парсит буффер на вхождение вида {\*\volgactf0XXXXX}
+# задача была по выявлению из rtf-файла невидимого jpg
+def parsertf(text):
+    f = open("result", "w")
+    for i in range(0, 1000):
+        s = r"{\*\volgactf%i " % (i)
+        begin = text.find(s)
+        if begin == -1:
+            print i
+            break
+        end = text.find("}", begin)
+        str = text[begin+len(s):end]
+        f.write(str)
+    f.close()
+
 rands(1)
