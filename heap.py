@@ -289,7 +289,29 @@ def perevod_chisel():
             n = q + n
         print (n)
 
+### Функция переворота строки
+# при входе primer 1 вернет 1 remirp
 def reversestr(str):
     return str[::-1]
 
-print reversestr("pts asd")
+### Аналог функций random и seed из библиотеки glibc
+# Очень медленная в rand.cpp на 2 порядка быстрее
+def rands(seed):
+    r = []
+    r.append(seed)
+    for i in range(1,31):
+        r.append((16807 * r[i-1]) % 2147483647)
+        if (r[i] < 0):
+            r[i] += 2147483647
+
+    for i in range(31, 34):
+        r.append(r[i-31])
+
+    for i in range(34, 344):
+        r.append((r[i-31] + r[i-3]) &0xffffffff)
+
+    for i in range(344, 355):
+        r.append((r[i-31] + r[i-3])  &0xffffffff)
+        print(r[i])
+
+rands(1)
