@@ -241,12 +241,11 @@ def beginSolve():
 ### Работа с диском на уровне ОС Windows
 # Вызов должен быть ParseDisk(r"\\.\f:") !!! требуются права администратора
 import os, sys, re
-import win32file
-import win32con
-
 def grep(pattern,list):
     return filter(pattern.search,list)
 def ParseDisk(name):
+    import win32file
+    import win32con
     BUFFER_SIZE = 2048
     Buffer = 0
     Buffer_Read = BUFFER_SIZE
@@ -290,5 +289,7 @@ def perevod_chisel():
             n = q + n
         print (n)
 
+def reversestr(str):
+    return str[::-1]
 
-#print bin2str("110000 110001 110010 110011")
+print reversestr("pts asd")
