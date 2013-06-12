@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e545d86-b4b6-49f3-a31e-fb43893f6d14" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wonder.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-    </list>
+    <list default="true" id="7e545d86-b4b6-49f3-a31e-fb43893f6d14" name="Default" comment="" />
     <ignored path="CTF_example.iws" />
     <ignored path=".idea/workspace.xml" />
+    <file path="/Dummy.txt" changelist="7e545d86-b4b6-49f3-a31e-fb43893f6d14" time="1368245491992" ignored="false" />
+    <file path="/polska.py" changelist="7e545d86-b4b6-49f3-a31e-fb43893f6d14" time="1368344107951" ignored="false" />
+    <file path="/sap300.py" changelist="7e545d86-b4b6-49f3-a31e-fb43893f6d14" time="1368323273787" ignored="false" />
+    <file path="/baltic300.py" changelist="7e545d86-b4b6-49f3-a31e-fb43893f6d14" time="1368267587887" ignored="false" />
+    <file path="/cookie.py" changelist="7e545d86-b4b6-49f3-a31e-fb43893f6d14" time="1368407956631" ignored="false" />
+    <file path="/xor.py" changelist="7e545d86-b4b6-49f3-a31e-fb43893f6d14" time="1369299743425" ignored="false" />
+    <file path="/ebctf1.py" changelist="7e545d86-b4b6-49f3-a31e-fb43893f6d14" time="1370116618043" ignored="false" />
+    <file path="/grep.py" changelist="7e545d86-b4b6-49f3-a31e-fb43893f6d14" time="1370369488590" ignored="false" />
+    <file path="/boston1.py" changelist="7e545d86-b4b6-49f3-a31e-fb43893f6d14" time="1370791019789" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,34 +32,25 @@
       <file leaf-file-name="cookie.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cookie.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="0" selection-start="2397" selection-end="2397" vertical-scroll-proportion="0.0">
+            <state line="273" column="28" selection-start="10012" selection-end="10019" vertical-scroll-proportion="-2.06">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="seaboy.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seaboy.py">
+      <file leaf-file-name="baltic300.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/baltic300.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="10" column="0" selection-start="21" selection-end="199" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="crypto.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/crypto.py">
+      <file leaf-file-name="xor.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="279" column="13" selection-start="26368" selection-end="26368" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="wonder.cpp" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/wonder.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="69" selection-start="3" selection-end="69" vertical-scroll-proportion="0.0">
+            <state line="61" column="28" selection-start="2218" selection-end="2218" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -63,43 +59,7 @@
       <file leaf-file-name="heap.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/heap.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="171" column="67" selection-start="7817" selection-end="7873" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="primes.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/primes.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="103" column="20" selection-start="2583" selection-end="2583" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pcapparser.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pcapparser.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="14" selection-start="441" selection-end="441" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fibo.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/fibo.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="16" selection-start="0" selection-end="23" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="curses_loc.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/curses_loc.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="148" selection-start="200" selection-end="200" vertical-scroll-proportion="0.0">
+            <state line="78" column="21" selection-start="3369" selection-end="3372" vertical-scroll-proportion="-4.48">
               <folding />
             </state>
           </provider>
@@ -108,7 +68,52 @@
       <file leaf-file-name="image.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/image.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="66" selection-start="1202" selection-end="1202" vertical-scroll-proportion="0.0">
+            <state line="23" column="0" selection-start="822" selection-end="908" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ebctf1.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ebctf1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="106" column="43" selection-start="3725" selection-end="3725" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="grep.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grep.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="0" selection-start="646" selection-end="646" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="polska.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/polska.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="0" selection-start="0" selection-end="24" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="boston1.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/boston1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="75" column="0" selection-start="1389" selection-end="1918" vertical-scroll-proportion="0.90909094">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin100.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin100.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="0" selection-start="0" selection-end="24" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -124,30 +129,40 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/fibo.py" />
-        <option value="$PROJECT_DIR$/pcapparser.py" />
-        <option value="$PROJECT_DIR$/curses.py" />
-        <option value="$PROJECT_DIR$/curses_loc.py" />
-        <option value="$PROJECT_DIR$/image.py" />
-        <option value="$PROJECT_DIR$/seaboy.py" />
-        <option value="$PROJECT_DIR$/primes.py" />
+        <option value="$PROJECT_DIR$/cr2.py" />
+        <option value="$PROJECT_DIR$/ProveIt.py" />
+        <option value="$PROJECT_DIR$/for100.py" />
+        <option value="$PROJECT_DIR$/admin100.py" />
+        <option value="$PROJECT_DIR$/stego100.py" />
+        <option value="$PROJECT_DIR$/ppc100.py" />
+        <option value="$PROJECT_DIR$/for200.py" />
+        <option value="$PROJECT_DIR$/ppc200.py" />
+        <option value="$PROJECT_DIR$/baltic300.py" />
+        <option value="$PROJECT_DIR$/sap300.py" />
+        <option value="$PROJECT_DIR$/polska.py" />
         <option value="$PROJECT_DIR$/cookie.py" />
-        <option value="$PROJECT_DIR$/heap.py" />
-        <option value="$PROJECT_DIR$/crypto.py" />
-        <option value="$PROJECT_DIR$/wonder.cpp" />
+        <option value="$PROJECT_DIR$/xor.py" />
+        <option value="$PROJECT_DIR$/ebctf1.py" />
+        <option value="$PROJECT_DIR$/grep.py" />
+        <option value="$PROJECT_DIR$/boston1.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1176" />
+    <option name="width" value="1378" />
+    <option name="height" value="780" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -197,12 +212,24 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PythonSdkConfigurable" />
     <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../2012.phdquals" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
-  <component name="RunManager" selected="Python.crypto">
-    <configuration default="false" name="image" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <PyConsoleSettings />
+    </option>
+    <option name="myDjangoConsoleState">
+      <PyConsoleSettings />
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.boston1">
+    <configuration default="false" name="cookie" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -213,13 +240,13 @@
       <option name="IS_MODULE_SDK" value="true" />
       <module name="CTF_example" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/image.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cookie.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="heap" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="xor" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -230,13 +257,13 @@
       <option name="IS_MODULE_SDK" value="true" />
       <module name="CTF_example" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/heap.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/xor.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="curses_loc" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="ebctf1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -247,13 +274,13 @@
       <option name="IS_MODULE_SDK" value="true" />
       <module name="CTF_example" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/curses_loc.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ebctf1.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="crypto" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="grep" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -264,13 +291,13 @@
       <option name="IS_MODULE_SDK" value="true" />
       <module name="CTF_example" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/crypto.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/grep.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="primes" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="boston1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -281,7 +308,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <module name="CTF_example" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/primes.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/boston1.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
@@ -319,6 +346,8 @@
       <option name="PATTERN" value="" />
       <option name="USE_PATTERN" value="false" />
       <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -340,19 +369,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.image" />
-      <item index="1" class="java.lang.String" itemvalue="Python.heap" />
-      <item index="2" class="java.lang.String" itemvalue="Python.curses_loc" />
-      <item index="3" class="java.lang.String" itemvalue="Python.crypto" />
-      <item index="4" class="java.lang.String" itemvalue="Python.primes" />
+      <item index="0" class="java.lang.String" itemvalue="Python.cookie" />
+      <item index="1" class="java.lang.String" itemvalue="Python.xor" />
+      <item index="2" class="java.lang.String" itemvalue="Python.ebctf1" />
+      <item index="3" class="java.lang.String" itemvalue="Python.grep" />
+      <item index="4" class="java.lang.String" itemvalue="Python.boston1" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.crypto" />
-        <item index="1" class="java.lang.String" itemvalue="Python.image" />
-        <item index="2" class="java.lang.String" itemvalue="Python.heap" />
-        <item index="3" class="java.lang.String" itemvalue="Python.primes" />
-        <item index="4" class="java.lang.String" itemvalue="Python.curses_loc" />
+        <item index="0" class="java.lang.String" itemvalue="Python.boston1" />
+        <item index="1" class="java.lang.String" itemvalue="Python.grep" />
+        <item index="2" class="java.lang.String" itemvalue="Python.ebctf1" />
+        <item index="3" class="java.lang.String" itemvalue="Python.xor" />
+        <item index="4" class="java.lang.String" itemvalue="Python.cookie" />
       </list>
     </recent_temporary>
   </component>
@@ -384,18 +413,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
+    <frame x="-8" y="-8" width="1378" height="780" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297244" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10298826" sideWeight="0.8139764" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.122340426" sideWeight="0.6451613" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18602362" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3548387" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297244" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -439,6 +468,9 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
+    <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
+    <option name="LIMIT_HISTORY" value="true" />
+    <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
     <option name="LAST_COMMIT_MESSAGE" />
@@ -459,114 +491,106 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pcapparser.py">
+    <entry file="file://$PROJECT_DIR$/stego100.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="25" column="14" selection-start="933" selection-end="933" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ppc100.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="27" selection-start="0" selection-end="91" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/for200.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="22" selection-start="1232" selection-end="1232" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ppc200.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="66" selection-start="1128" selection-end="1128" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sudoku.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="164" column="0" selection-start="4903" selection-end="4903" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cookie.py">
+    <entry file="file://$PROJECT_DIR$/sap300.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="40" selection-start="1276" selection-end="1276" vertical-scroll-proportion="0.0">
+        <state line="13" column="13" selection-start="272" selection-end="272" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fibo.py">
+    <entry file="file://$PROJECT_DIR$/xor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="23" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/image.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="23" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/heap.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="0" selection-start="4821" selection-end="4821" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pcapparser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="14" selection-start="441" selection-end="441" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pcapparser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="14" selection-start="441" selection-end="441" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/curses_loc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="148" selection-start="200" selection-end="200" vertical-scroll-proportion="0.0">
+        <state line="61" column="28" selection-start="2218" selection-end="2218" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/image.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="66" selection-start="1202" selection-end="1202" vertical-scroll-proportion="0.0">
+        <state line="23" column="0" selection-start="822" selection-end="908" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/primes.py">
+    <entry file="file://$PROJECT_DIR$/admin100.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="20" selection-start="2583" selection-end="2583" vertical-scroll-proportion="0.0">
+        <state line="1" column="0" selection-start="0" selection-end="24" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cookie.py">
+    <entry file="file://$PROJECT_DIR$/grep.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="0" selection-start="2397" selection-end="2397" vertical-scroll-proportion="0.0">
+        <state line="28" column="0" selection-start="646" selection-end="646" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/seaboy.py">
+    <entry file="file://$PROJECT_DIR$/ebctf1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="106" column="43" selection-start="3725" selection-end="3725" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polska.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="0" selection-end="24" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/heap.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="171" column="67" selection-start="7817" selection-end="7873" vertical-scroll-proportion="0.0">
+        <state line="78" column="21" selection-start="3369" selection-end="3372" vertical-scroll-proportion="-4.48">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fibo.py">
+    <entry file="file://$PROJECT_DIR$/cookie.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="16" selection-start="0" selection-end="23" vertical-scroll-proportion="0.0">
+        <state line="273" column="28" selection-start="10012" selection-end="10019" vertical-scroll-proportion="-2.06">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crypto.py">
+    <entry file="file://$PROJECT_DIR$/baltic300.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="279" column="13" selection-start="26368" selection-end="26368" vertical-scroll-proportion="0.0">
+        <state line="10" column="0" selection-start="21" selection-end="199" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wonder.cpp">
+    <entry file="file://$PROJECT_DIR$/boston1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="69" selection-start="3" selection-end="69" vertical-scroll-proportion="0.0">
+        <state line="75" column="0" selection-start="1389" selection-end="1918" vertical-scroll-proportion="0.90909094">
           <folding />
         </state>
       </provider>
