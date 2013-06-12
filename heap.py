@@ -333,4 +333,33 @@ def parsertf(text):
         f.write(str)
     f.close()
 
+### Нерекурсивная функция обхода ФС для сбора файла
+# задача: в каталоге верхнего уровня подкоталоги буквы
+# в каждом из них файл, с указанием места, где этот символ встречается.
+# требуется собрать файл в кучу
+# Пройти по каталогам первого уровня. Собрать все
+def walk():
+    import sys, os
+    q = list(1500 * " ") # вырожденно добавляем больщой буффер, т.к. символы добавляется не последовательно
+    for name in os.listdir("admin100"):
+        t = name
+        if t == "coma":
+            t = ","
+        if t == "dot":
+            t = "."
+        if t == "quote":
+            t = '"'
+        if t == "space":
+            t = " "
+        path = os.path.join("admin100", name, "file")
+        f = open(path)
+        lines = f.readlines()
+        for line in lines:
+            q[int(line)] = t
+        f.close()
+    pts = open("asd", "w")
+    for i in q:
+        pts.write(i)
+    pts.close()
+
 rands(1)
