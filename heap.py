@@ -410,4 +410,12 @@ def xor_file(file_name, key):
 def startBrowser(url):
     os.system(r'c:/"Program Files"/"Mozilla Firefox"/firefox.exe ' + url)
 
+### Подсчет контрольной суммы всеми доступными алгоритмами
+# Для функции требуется файл crc_list и модуль crcmod
+def crc_all(): # подсчет контрольной суммы для demo
+    import crcmod
+    for i in (open("crc_list.txt", "r").readlines()):
+        crc32_func = crcmod.predefined.mkCrcFun(i.strip())
+        print "%x" % crc32_func('demo')
+
 rands(1)
